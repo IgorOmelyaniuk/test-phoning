@@ -55,7 +55,7 @@ navigator.permissions.query(queryObj)
 try {
 const results = await Promise.all(promises);
 // log the state of each camera
-results.forEach(({ state }, i) => alert("Camera", i, state));
+results.forEach(({ state }, i) => alert(state));
 } catch (error) {
 console.error(error);
 }
