@@ -20,10 +20,7 @@ window.eanScannedSuccess = function (ean) {
 
 const button = document.getElementById('button');
 
-if (button) button.addEventListener('click', handleClick);
-
-
-button.addEventListener('click', async () => {
+if (button) button.addEventListener('click', async () => {
   alert(window?.webkit);
   alert(window?.webkit?.messageHandlers);
   try {
