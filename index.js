@@ -23,6 +23,8 @@ const button = document.getElementById('button');
 if (button) button.addEventListener('click', async () => {
   try {
     await navigator.mediaDevices.getUserMedia({ video: true });
+    navigator.mediaDevices.enumerateDevices().then(devices => 
+      devices.forEach(device => console.log(device.label)))
     alert('success');
   } catch {
     alert('error');
