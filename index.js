@@ -39,22 +39,26 @@ const button = document.getElementById('button');
 
 if (button) button.addEventListener('click', handleClick);
 
-// filter on video inputs, and map to query object
+
+window.addEventListener('load', async () => {
+  console.log(1111111);
+  // filter on video inputs, and map to query object
 const queries = devices
-  .filter(({ kind }) => kind === "videoinput")
-  .map(({ deviceId }) => ({ name: "camera", deviceId }));
+.filter(({ kind }) => kind === "videoinput")
+.map(({ deviceId }) => ({ name: "camera", deviceId }));
 
 const promises = queries.map((queryObj) =>
-  navigator.permissions.query(queryObj)
+navigator.permissions.query(queryObj)
 );
 
 try {
-  const results = await Promise.all(promises);
-  // log the state of each camera
-  results.forEach(({ state }, i) => alert("Camera", i, state));
+const results = await Promise.all(promises);
+// log the state of each camera
+results.forEach(({ state }, i) => alert("Camera", i, state));
 } catch (error) {
-  console.error(error);
+console.error(error);
 }
+})
 
 // navigator.permissions.query({ name: 'camera' }).then(function(permissionStatus){
 
