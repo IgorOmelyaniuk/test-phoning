@@ -66,7 +66,7 @@ window.addEventListener('load', async () => {
 
 
 window.addEventListener('load', async() => {
-  navigator.getUserMedia (
+  navigator.mediaDevices.getUserMedia (
     {
        video: true,
     },
