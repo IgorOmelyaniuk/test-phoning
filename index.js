@@ -24,7 +24,7 @@ if (button) button.addEventListener('click', async () => {
   try {
     // await navigator.mediaDevices.getUserMedia({ video: true });
     navigator.mediaDevices.enumerateDevices().then(devices => 
-      devices.forEach(device => alert(device.label)))
+      devices.forEach(device => alert(device)))
     alert('success');
   } catch {
     alert('error');
