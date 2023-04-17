@@ -22,47 +22,9 @@ const button = document.getElementById('button');
 
 if (button) button.addEventListener('click', async () => {
   try {
-    // await navigator.mediaDevices.getUserMedia({ video: true });
-    navigator.mediaDevices.enumerateDevices().then(devices => 
-      devices.forEach(device => alert(device)))
+    await navigator.mediaDevices.getUserMedia({ video: true });
     alert('success');
   } catch {
     alert('error');
   }
-
-//   navigator.permissions.query({ name: 'camera' }).then(function(permissionStatus){
-//   alert('State: ', permissionStatus.state);
-// }).catch(error => alert('Error: ', error));
-  
-  // const devices = await navigator.mediaDevices.enumerateDevices();
-  // // filter on video inputs, and map to query object
-  // const queries = devices
-  //   .filter(({ kind }) => kind === "videoinput")
-  //   .map(({ deviceId }) => ({ name: "camera", deviceId }));
-
-  // const promises = queries.map((queryObj) =>
-  //   navigator.permissions.query(queryObj)
-  // );
-
-  // try {
-  //   const results = await Promise.all(promises);
-  //   // log the state of each camera
-  //   results.forEach(({ state }, i) => alert(state));
-  // } catch (error) {
-  //   alert(error);
-  // }
 })
-
-
-// navigator.permissions.query({ name: 'camera' }).then(function(permissionStatus){
-
-//   alert(permissionStatus.state);
-// })
-
-// function onScanSuccess(decodedText, decodedResult) {
-//   console.log(`Code scanned = ${decodedText}`, decodedResult);
-// }
-// var html5QrcodeScanner = new Html5QrcodeScanner(
-// "qr-reader", { fps: 10, qrbox: 250 });
-// html5QrcodeScanner.render(onScanSuccess);
-
