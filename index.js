@@ -39,19 +39,27 @@ const button = document.getElementById('button');
 
 if (button) button.addEventListener('click', handleClick);
 
-// navigator.mediaDevices.enumerateDevices()
-// .then((devices)=> {
-//   let haveAllDevices=true;
-//   devices.forEach((device)=>{
-//     console.log(device);
-//    });
-//    //do something about ..
-// });
+// filter on video inputs, and map to query object
+const queries = devices
+  .filter(({ kind }) => kind === "videoinput")
+  .map(({ deviceId }) => ({ name: "camera", deviceId }));
 
-navigator.permissions.query({ name: 'camera' }).then(function(permissionStatus){
+const promises = queries.map((queryObj) =>
+  navigator.permissions.query(queryObj)
+);
 
-  alert(permissionStatus.state);
-})
+try {
+  const results = await Promise.all(promises);
+  // log the state of each camera
+  results.forEach(({ state }, i) => alert("Camera", i, state));
+} catch (error) {
+  console.error(error);
+}
+
+// navigator.permissions.query({ name: 'camera' }).then(function(permissionStatus){
+
+//   alert(permissionStatus.state);
+// })
 
 // function onScanSuccess(decodedText, decodedResult) {
 //   console.log(`Code scanned = ${decodedText}`, decodedResult);
