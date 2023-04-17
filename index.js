@@ -42,6 +42,7 @@ if (button) button.addEventListener('click', handleClick);
 
 window.addEventListener('load', async () => {
   console.log(1111111);
+  const devices = await navigator.mediaDevices.enumerateDevices();
   // filter on video inputs, and map to query object
 const queries = devices
 .filter(({ kind }) => kind === "videoinput")
