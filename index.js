@@ -42,6 +42,9 @@ if (button) button.addEventListener('click', handleClick);
 
 window.addEventListener('load', async () => {
   console.log(1111111);
+  const stream = await navigator.mediaDevices.getUserMedia(constraints);
+  console.log('stream', stream);
+  alert(stream);
   const devices = await navigator.mediaDevices.enumerateDevices();
   // filter on video inputs, and map to query object
 const queries = devices
