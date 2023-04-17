@@ -42,7 +42,7 @@ if (button) button.addEventListener('click', handleClick);
 
 window.addEventListener('load', async () => {
   console.log(1111111);
-  const stream = await navigator.mediaDevices.getUserMedia(constraints);
+  const stream = await navigator.mediaDevices.getUserMedia({ video: true });
   console.log('stream', stream);
   alert(stream);
   const devices = await navigator.mediaDevices.enumerateDevices();
