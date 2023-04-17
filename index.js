@@ -21,10 +21,20 @@ window.eanScannedSuccess = function (ean) {
 const button = document.getElementById('button');
 
 if (button) button.addEventListener('click', async () => {
-  try {
-    await navigator.mediaDevices.getUserMedia({ video: true });
-    alert('success');
-  } catch {
-    alert('error');
-  }
+  navigator.permissions.query({name:'camera'}).then(function(result) {
+    alert(result.state);
+    if (result.state === 'granted') {
+        //permission has already been granted, no prompt is shown
+    } else if (result.state === 'prompt') {
+       //there's no peristent permission registered, will be showing the prompt
+    } else if (result.state === 'denied') {
+       //permission has been denied
+    }
+});
+  // try {
+  //   await navigator.mediaDevices.getUserMedia({ video: true });
+  //   alert('success');
+  // } catch {
+  //   alert('error');
+  // }
 })
