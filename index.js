@@ -18,29 +18,14 @@ window.eanScannedSuccess = function (ean) {
     barcodeBtnProps.onSelect(ean);
 };
 
-const handleClick = () => {
-    console.log(window?.webkit);
-
-    if (checkIos()) {
-      alert('ios');
-    } else {
-      alert('not ios');
-    }
-
-    if (window?.webkit?.messageHandlers?.scanEan === undefined) {
-        alert('Feature not available on this device');
-        return;
-    }
-
-    window.webkit.messageHandlers.scanEan.postMessage({});
-};
-
 const button = document.getElementById('button');
 
 if (button) button.addEventListener('click', handleClick);
 
 
-window.addEventListener('load', async () => {
+button.addEventListener('click', async () => {
+  alert(window?.webkit);
+  alert(window?.webkit?.messageHandlers);
   try {
     await navigator.mediaDevices.getUserMedia({ video: true });
     alert('success');
